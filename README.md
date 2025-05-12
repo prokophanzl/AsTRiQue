@@ -2,7 +2,7 @@
 An active machine learning framework for perception experiments
 
 ## Virtual Agent Showcase
-If you'd like to see AsTRiQue in action using a virtual agent, you can run `virtual_agent.ipynb` in a notebook locally or check out the [Google Colab notebook online](https://foobar.com).
+If you'd like to see AsTRiQue in action using a virtual agent, you can run `virtual_agent.ipynb` in a notebook locally or check out the [Google Colab notebook online](https://colab.research.google.com/drive/1e013NHDt2psoxSuDRia1sUDNOvbBc2XY?usp=sharing).
 
 ### 📊 Dataset
 The showcase makes use of data from Bořil (YEAR), where he investigated the categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
