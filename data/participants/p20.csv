@@ -1,0 +1,105 @@
+participant,itemNr,itemID,speaker,orig,CV,voicing,duration,answer,time,history,answer_batch,filename
+P20,69,File032,NJ5,z,C,100,119,z,2394,0 2,z,NJ5_zC_100_File032.wav
+P20,18,File042,NJ1,z,C,100,88,z,2894,0 2,z,NJ1_zC_100_File042.wav
+P20,102,File030,NJ9,z,V,22,96,š,2319,0 3,s,NJ9_zV_22_File030.wav
+P20,45,File044,NJ11,z,C,88,75,z,8008,0 0 2 2,z,NJ11_zC_88_File044.wav
+P20,48,File036,NJ11,zh,V,29,71,š,2204,0 3,s,NJ11_zhV_29_File036.wav
+P20,36,File035,NJ11,s,V,33,148,s,2562,0 1,s,NJ11_sV_33_File035.wav
+P20,78,File013,NJ5,zh,V,7,140,š,6873,0 0 3,s,NJ5_zhV_7_File013.wav
+P20,49,File006,NJ2,s,C,0,188,s,2336,0 1,s,NJ2_sC_0_File006.wav
+P20,64,File035,NJ5,sh,C,5,211,s,5584,0 1,s,NJ5_shC_5_File035.wav
+P20,91,File008,NJ8,z,V,60,114,z,3624,0 2,z,NJ8_zV_60_File008.wav
+P20,23,File004,NJ1,zh,C,0,126,ž,2780,0 4,z,NJ1_zhC_0_File004.wav
+P20,96,File045,NJ9,s,V,5,212,s,2110,0 1,s,NJ9_sV_5_File045.wav
+P20,84,File035,NJ8,s,V,19,212,s,2184,0 1,s,NJ8_sV_19_File035.wav
+P20,21,File019,NJ1,z,V,56,92,s,4561,0 1,s,NJ1_zV_56_File019.wav
+P20,94,File025,NJ8,zh,V,62,134,z,2727,0 2,z,NJ8_zhV_62_File025.wav
+P20,92,File022,NJ8,zh,C,100,140,ž,2504,0 4,z,NJ8_zhC_100_File022.wav
+P20,100,File020,NJ9,z,C,100,108,z,2524,0 2,z,NJ9_zC_100_File020.wav
+P20,20,File031,NJ1,z,C,27,117,s,4253,0 1,s,NJ1_zC_27_File031.wav
+P20,99,File043,NJ9,sh,V,13,163,š,10162,0 3,s,NJ9_shV_13_File043.wav
+P20,22,File036,NJ1,z,V,8,127,s,2099,0 1,s,NJ1_zV_8_File036.wav
+P20,101,File043,NJ9,z,C,36,115,z,2398,0 2,z,NJ9_zC_36_File043.wav
+P20,86,File016,NJ8,sh,C,0,147,s,4118,0 1,s,NJ8_shC_0_File016.wav
+P20,85,File023,NJ8,s,V,28,182,s,3106,0 1,s,NJ8_sV_28_File023.wav
+P20,47,File034,NJ11,zh,C,100,94,z,2608,0 2,z,NJ11_zhC_100_File034.wav
+P20,11,File016,NJ1,sh,C,15,200,š,2255,0 3,s,NJ1_shC_15_File016.wav
+P20,105,File022,NJ9,zh,C,62,124,š,3293,0 3,s,NJ9_zhC_62_File022.wav
+P20,17,File020,NJ1,sh,V,42,186,š,2514,0 3,s,NJ1_shV_42_File020.wav
+P20,93,File035,NJ8,zh,V,19,161,š,6834,0 0 3,s,NJ8_zhV_19_File035.wav
+P20,70,File010,NJ5,z,C,27,142,z,2387,0 2,z,NJ5_zC_27_File010.wav
+P20,28,File025,NJ1,zh,V,8,117,š,2622,0 3,s,NJ1_zhV_8_File025.wav
+P20,33,File030,NJ11,s,C,9,112,s,2045,0 1,s,NJ11_sC_9_File030.wav
+P20,67,File031,NJ5,sh,V,9,224,š,3892,0 3,s,NJ5_shV_9_File031.wav
+P20,73,File009,NJ5,z,V,57,213,z,2055,0 2,z,NJ5_zV_57_File009.wav
+P20,79,File034,NJ5,zh,V,55,112,ž,9938,0 2 4 0,z,NJ5_zhV_55_File034.wav
+P20,59,File006,NJ5,s,C,0,173,s,1913,0 1,s,NJ5_sC_0_File006.wav
+P20,7,File022,NJ1,s,V,12,255,s,1952,0 1,s,NJ1_sV_12_File022.wav
+P20,95,File035,NJ8,zh,V,92,121,z,2753,0 2,z,NJ8_zhV_92_File035.wav
+P20,43,File023,NJ11,z,C,30,99,s,2293,0 1,s,NJ11_zC_30_File023.wav
+P20,103,File004,NJ9,z,V,33,124,z,2595,0 2,z,NJ9_zV_33_File004.wav
+P20,26,File022,NJ1,zh,C,23,136,s,8238,0 0 1,s,NJ1_zhC_23_File022.wav
+P20,50,File027,NJ2,s,C,6,178,s,2309,0 1,s,NJ2_sC_6_File027.wav
+P20,55,File042,NJ2,z,C,11,179,s,1875,0 1,s,NJ2_zC_11_File042.wav
+P20,5,File006,NJ1,s,C,13,247,s,1829,0 1,s,NJ1_sC_13_File006.wav
+P20,13,File015,NJ1,sh,C,28,291,š,3308,0 3,s,NJ1_shC_28_File015.wav
+P20,37,File018,NJ11,sh,C,0,102,š,2814,0 3,s,NJ11_shC_0_File018.wav
+P20,19,File020,NJ1,z,C,25,119,s,2450,0 1,s,NJ1_zC_25_File020.wav
+P20,98,File017,NJ9,sh,C,0,149,s,1870,0 1,s,NJ9_shC_0_File017.wav
+P20,44,File034,NJ11,z,C,60,58,s,8296,0 0 1,s,NJ11_zC_60_File034.wav
+P20,29,File025,NJ1,zh,V,17,117,š,3141,0 3,s,NJ1_zhV_17_File025.wav
+P20,61,File015,NJ5,s,V,13,163,s,2173,0 1,s,NJ5_sV_13_File015.wav
+P20,16,File011,NJ1,sh,V,26,227,š,2302,0 3,s,NJ1_shV_26_File011.wav
+P20,81,File017,NJ8,s,C,0,72,z,2667,0 2,z,NJ8_sC_0_File017.wav
+P20,89,File043,NJ8,sh,V,33,205,s,2503,0 1,s,NJ8_shV_33_File043.wav
+P20,27,File012,NJ1,zh,C,50,123,ž,2112,0 4,z,NJ1_zhC_50_File012.wav
+P20,12,File006,NJ1,sh,C,20,204,š,3142,0 3,s,NJ1_shC_20_File006.wav
+P20,46,File009,NJ11,z,V,92,124,z,2044,0 2,z,NJ11_zV_92_File009.wav
+P20,74,File004,NJ5,z,V,76,167,z,2183,0 2,z,NJ5_zV_76_File004.wav
+P20,15,File029,NJ1,sh,V,17,186,š,2591,0 3,s,NJ1_shV_17_File029.wav
+P20,83,File038,NJ8,s,C,33,98,s,2911,0 1,s,NJ8_sC_33_File038.wav
+P20,107,File003,NJ9,zh,V,29,146,š,2007,0 3,s,NJ9_zhV_29_File003.wav
+P20,25,File033,NJ1,zh,C,14,141,š,2392,0 3,s,NJ1_zhC_14_File033.wav
+P20,4,File029,NJ1,s,C,0,173,s,1851,0 1,s,NJ1_sC_0_File029.wav
+P20,60,File016,NJ5,s,C,8,127,s,2069,0 1,s,NJ5_sC_8_File016.wav
+P20,6,File016,NJ1,s,C,60,151,s,2011,0 1,s,NJ1_sC_60_File016.wav
+P20,62,File012,NJ5,s,V,17,182,s,1894,0 1,s,NJ5_sV_17_File012.wav
+P20,24,File044,NJ1,zh,C,8,129,ž,2866,0 4,z,NJ1_zhC_8_File044.wav
+P20,14,File033,NJ1,sh,V,8,251,š,2492,0 3,s,NJ1_shV_8_File033.wav
+P20,63,File015,NJ5,sh,C,0,97,s,3312,0 1,s,NJ5_shC_0_File015.wav
+P20,104,File044,NJ9,zh,C,20,95,z,4596,0 2,z,NJ9_zhC_20_File044.wav
+P20,38,File006,NJ11,sh,C,7,135,š,9157,0 3 0,s,NJ11_shC_7_File006.wav
+P20,53,File012,NJ2,s,V,27,216,s,1922,0 1,s,NJ2_sV_27_File012.wav
+P20,9,File038,NJ1,sh,C,0,181,š,2319,0 3,s,NJ1_shC_0_File038.wav
+P20,34,File007,NJ11,s,C,40,96,s,2208,0 1,s,NJ11_sC_40_File007.wav
+P20,42,File034,NJ11,sh,V,25,163,š,2491,0 3,s,NJ11_shV_25_File034.wav
+P20,75,File021,NJ5,zh,C,100,107,ž,1802,0 4,z,NJ5_zhC_100_File021.wav
+P20,68,File020,NJ5,sh,V,18,171,š,2440,0 3,s,NJ5_shV_18_File020.wav
+P20,65,File004,NJ5,sh,C,7,283,š,2030,0 3,s,NJ5_shC_7_File004.wav
+P20,54,File010,NJ2,z,C,100,93,z,2032,0 2,z,NJ2_zC_100_File010.wav
+P20,106,File008,NJ9,zh,V,100,118,ž,7762,0 0 4,z,NJ9_zhV_100_File008.wav
+P20,41,File033,NJ11,sh,V,6,159,š,2434,0 3,s,NJ11_shV_6_File033.wav
+P20,80,File024,NJ5,zh,V,95,133,ž,1819,0 4,z,NJ5_zhV_95_File024.wav
+P20,97,File016,NJ9,s,V,8,241,s,1786,0 1,s,NJ9_sV_8_File016.wav
+P20,57,File025,NJ2,z,V,47,190,z,2587,0 2,z,NJ2_zV_47_File025.wav
+P20,58,File008,NJ2,z,V,84,167,z,2055,0 2,z,NJ2_zV_84_File008.wav
+P20,10,File004,NJ1,sh,C,10,207,š,2421,0 3,s,NJ1_shC_10_File004.wav
+P20,56,File021,NJ2,z,C,69,160,z,2827,0 2,z,NJ2_zC_69_File021.wav
+P20,30,File013,NJ1,zh,V,33,148,š,2525,0 3,s,NJ1_zhV_33_File013.wav
+P20,82,File007,NJ8,s,C,15,131,s,1723,0 1,s,NJ8_sC_15_File007.wav
+P20,87,File017,NJ8,sh,C,29,77,s,1784,0 1,s,NJ8_shC_29_File017.wav
+P20,31,File013,NJ1,zh,V,58,120,š,2985,0 3,s,NJ1_zhV_58_File013.wav
+P20,35,File005,NJ11,s,V,7,151,s,2086,0 1,s,NJ11_sV_7_File005.wav
+P20,71,File011,NJ5,z,C,58,118,z,2172,0 2,z,NJ5_zC_58_File011.wav
+P20,8,File005,NJ1,s,V,47,197,s,1610,0 1,s,NJ1_sV_47_File005.wav
+P20,66,File017,NJ5,sh,V,5,188,s,1891,0 1,s,NJ5_shV_5_File017.wav
+P20,77,File004,NJ5,zh,C,31,161,ž,2557,0 4,z,NJ5_zhC_31_File004.wav
+P20,88,File033,NJ8,sh,V,11,172,z,22514,0 0 2,z,NJ8_shV_11_File033.wav
+P20,76,File025,NJ5,zh,C,27,145,s,3168,0 1,s,NJ5_zhC_27_File025.wav
+P20,72,File009,NJ5,z,C,89,174,z,1855,0 2,z,NJ5_zC_89_File009.wav
+P20,51,File007,NJ2,s,C,7,142,s,1983,0 1,s,NJ2_sC_7_File007.wav
+P20,52,File026,NJ2,s,V,5,200,s,1810,0 1,s,NJ2_sV_5_File026.wav
+P20,40,File038,NJ11,sh,C,68,183,š,2141,0 3,s,NJ11_shC_68_File038.wav
+P20,90,File022,NJ8,z,C,100,112,z,1751,0 2,z,NJ8_zC_100_File022.wav
+P20,39,File027,NJ11,sh,C,15,131,š,2255,0 3,s,NJ11_shC_15_File027.wav
+P20,32,File006,NJ11,s,C,0,140,s,1703,0 1,s,NJ11_sC_0_File006.wav
