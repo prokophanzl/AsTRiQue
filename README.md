@@ -1,5 +1,5 @@
 # AsTRiQue
-An active machine learning framework for perception experiments
+**AS**k **T**he **RI**ght **QUE**stions: An active machine learning framework for perception experiments
 
 ## Virtual Agent Showcase
 If you'd like to see AsTRiQue in action using a virtual agent, you can run `virtual_agent.ipynb` in a notebook locally or check out the [Google Colab notebook online](https://colab.research.google.com/drive/1e013NHDt2psoxSuDRia1sUDNOvbBc2XY?usp=sharing).
