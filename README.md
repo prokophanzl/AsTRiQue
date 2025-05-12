@@ -18,6 +18,7 @@ This spreadsheet contains the filenames of all recordings used in the experiment
 | ...                  | ...     | ...      |
 
 #### 📁 data/participants/p01.csv
+
 This spreadsheet contains participant 1's answers in the real experiment.
 | filename             | answer_batch |
 | -------------------- | ------------ |
@@ -25,7 +26,7 @@ This spreadsheet contains participant 1's answers in the real experiment.
 | ...                  | ...          |
 
 
-### ⚙️ Contants and Configs
+### ⚙️ Constants and Configs
 
 ```python
 # data structure config (don't change this)
