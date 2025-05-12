@@ -7,7 +7,7 @@ If you'd like to see AsTRiQue in action using a virtual agent, you can run `virt
 ### 📊 Dataset
 The showcase makes use of data from Bořil (YEAR), where he investigated the categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
 
-### 📊 Data Structure
+### 🗂️ Data Structure
 #### 📁 data/data.csv
 This spreadsheet contains the filenames of all recordings used in the experiment, as well as their parameters (voicing and duration).
 
