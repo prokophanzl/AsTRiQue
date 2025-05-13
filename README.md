@@ -11,6 +11,23 @@ This process repeats: the participant answers, the model updates, and a new unce
 
 To test and evaluate this model, there is an option to use a lookup table as the oracle (as a so-called virtual agent) instead of a human participant.
 
+## ℹ️ Example Chart
+
+In this example, a virtual agent simulated participant 3 with the following AsTRiQue config:
+
+```python
+INIT_RANDOM_SAMPLES = 10      # initial random samples to collect
+MIN_ITERATIONS = 30           # minimum number of iterations
+CLEANSER_FREQUENCY = 0        # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
+MODEL_CERTAINTY_CUTOFF = 0.95 # stopping certainty threshold
+PARTICIPANT_TO_MODEL = 'p03'  # participant ID to simulate
+```
+
+The oracle (virtual agent) classified 58 stimuli out of 104. The remaining 46 were classified by the model with a 97.8% accuracy. This specific case would, with a human participant, translate to reducing the participant workload by over 44% while while still producing data that is nearly as reliable as if the participant had answered every item themselves—with an effective overall accuracy of over 99%.
+
+Of course, this is an exceptionally good scenario; the model's efficiency can be impacted by the research question and especially the participant's predictability (the less consistent the participant is in in their answers, the more difficult it is to model them in the first place).
+
+![participant 3's answer and AsTRiQue prediction chart](images/p03_virtual_agent.png)
 
 ## 🧑🏾 Human Workflow Showcase
 
