@@ -9,6 +9,8 @@ To keep things balanced, there is also an option to occasionally include a very 
 
 This process repeats: the participant answers, the model updates, and a new uncertain stimulus is selected. Once the model is confident enough in its predictions of all the stimuli the participant hasn't been presented with (based on a pre-determined confidence value), the experiment ends.
 
+To test and evaluate this model, there is an option to use a lookup table as the oracle (as a so-called virtual agent) instead of a human participant.
+
 
 ## 🧑🏾 Human Workflow Showcase
 
