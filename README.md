@@ -3,7 +3,7 @@
 
 AsTRiQue is a tool designed to streamline perception experiments that involve large amounts of stimuli. In traditional perception experiments, participants often have to classify a large number of items, which can be time-consuming and tiring. AsTRiQue minimizes this burden through active learning; a kind of machine learning where a model is continuously updated based on the participant’s input to decide what to ask next.
 
-The experiment starts by randomly selecting a few stimuli for the participant to classify. Based on the answers, a logistic regression model is trained to predict how the participant might respond to all the remaining stimuli. Then, the model picks the stimulus it is most uncertain about (uncertainty sampling). By targeting these hard-to-predict cases, the model learns much faster.
+The experiment starts by randomly selecting a few stimuli for the participant ("oracle") to classify. Based on the answers, a logistic regression model is trained to predict how the participant might respond to all the remaining stimuli. Then, the model picks the stimulus it is most uncertain about (uncertainty sampling). By targeting these hard-to-predict cases, the model learns much faster.
 
 To keep things balanced, there is also an option to occasionally include a very easy (high-certainty) stimulus as a “cleanser” to reduce participant fatigue from repetitive difficult stimuli.
 
