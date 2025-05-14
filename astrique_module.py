@@ -155,7 +155,7 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
     plt.tight_layout()
     plt.show()
 
-def evaluate_model(stimuli, filename_col, query_participant_classification, output_widget = None):
+def evaluate_model(stimuli, filename_col, query_participant_classification):
     """
     Evaluate model predictions on the unanswered data by comparing them to real labels
     obtained via query_participant_classification().
@@ -176,7 +176,7 @@ def evaluate_model(stimuli, filename_col, query_participant_classification, outp
     for filename in unanswered[filename_col]:
         # print which sound is being evaluated out of how many - count filenames from 1
         print(f"Evaluating sound {unanswered[filename_col].tolist().index(filename) + 1} out of {len(unanswered[filename_col])}")
-        true_label = int(query_participant_classification(filename, output_widget))
+        true_label = int(query_participant_classification(filename))
         true_labels.append(true_label)
 
     # calculate metrics
