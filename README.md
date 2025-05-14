@@ -31,12 +31,12 @@ Of course, this is an exceptionally good scenario; the model's efficiency can be
 
 ## 🧑🏾 Human Workflow Showcase
 
-If you'd like to see AsTRiQue in action with yourself as the participant, you can run the `participant.ipynb` notebook locally or check out the [showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/colab-showcase/participant_showcase.ipynb).
+If you'd like to see AsTRiQue in action with yourself as the participant, you can run the `participant.ipynb` notebook locally or check out the [showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/participant.ipynb).
 
 In the notebook, you'll be asked to classify all 104 stimuli. The model will stop training after the confidence threshold is reached, the rest of your classifications will be used to evaluate the model's performance.
 
 ## 🤖 Virtual Agent Showcase
-Not feeling like doing the perception experiment yourself? You can still see AsTRiQue in action by running the `virtual_agent.ipynb` notebook locally or checking out the [virtual agent showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/colab-showcase/virtual_agent_showcase.ipynb). Instead of querying you as the oracle, the model will query a lookup table of a real participant who took part in the original experiment.
+Not feeling like doing the perception experiment yourself? You can still see AsTRiQue in action by running the `virtual_agent.ipynb` notebook locally or checking out the [virtual agent showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/virtual_agent.ipynb). Instead of querying you as the oracle, the model will query a lookup table of a real participant who took part in the original experiment.
 
 ### 📊 Dataset
 The showcase makes use of data from Bořil (YEAR), where he investigated the categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
