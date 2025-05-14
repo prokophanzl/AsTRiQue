@@ -132,8 +132,8 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
     # decision boundary grid
     x_min, x_max = stimuli[predictor1].min() - 1, stimuli[predictor1].max() + 1
     y_min, y_max = stimuli[predictor2].min() - 1, stimuli[predictor2].max() + 1
-    xx, yy = np.meshgrid(np.linspace(x_min, x_max, 100),
-                         np.linspace(y_min, y_max, 100))
+    xx, yy = np.meshgrid(np.linspace(x_min, x_max, 300),
+                         np.linspace(y_min, y_max, 300))
 
     grid_points = pd.DataFrame(
         np.c_[xx.ravel(), yy.ravel()],
