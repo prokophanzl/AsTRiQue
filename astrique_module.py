@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 # TARGET = 'answer_batch'                   # target column name
 # DATA_PATH = 'data/data.csv'               # sound info data file path
 # PARTICIPANT_CSV_DIR = 'data/participants' # participant CSV directory
-# PROCESSED_PATH = 'data_processed.csv'     # processed data file path; leave blank to disable
+# PROCESSED_PATH = 'data_processed.csv'     # processed data file path; empty string to disable
 # AUDIO_FOLDER = 'data/audio'               # audio file directory
 
 # INIT_RANDOM_SAMPLES = 10                  # initial random samples to collect
