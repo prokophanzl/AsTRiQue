@@ -1,5 +1,6 @@
 import numpy as np
 from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -153,6 +154,42 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
     plt.legend()
     plt.tight_layout()
     plt.show()
+
+def evaluate_model(stimuli, filename_col, query_participant_classification):
+    """
+    Evaluate model predictions on the unanswered data by comparing them to real labels
+    obtained via query_participant_classification().
+    """
+    # get unanswered data
+    unanswered = stimuli[stimuli['participant_classification'].isna()].copy()
+    
+    if unanswered.empty:
+        print("No unanswered data to evaluate.")
+        return
+
+    # query the actual class for evaluation
+    true_labels = []
+    predicted_labels = unanswered['predicted_class'].tolist()
+
+    print("Evaluating model predictions on unanswered data...")
+
+    for filename in unanswered[filename_col]:
+        # print which sound is being evaluated out of how many - count filenames from 1
+        print(f"Evaluating sound {unanswered[filename_col].tolist().index(filename) + 1} out of {len(unanswered[filename_col])}")
+        true_label = int(query_participant_classification(filename))
+        true_labels.append(true_label)
+
+    # calculate metrics
+    acc = accuracy_score(true_labels, predicted_labels)
+    cm = confusion_matrix(true_labels, predicted_labels)
+    report = classification_report(true_labels, predicted_labels)
+
+    print("\n=== Evaluation on Unanswered Data ===")
+    print(f"Accuracy: {acc:.4f}")
+    print("Confusion Matrix:")
+    print(cm)
+    print("\nClassification Report:")
+    print(report)
 
 def export_data(stimuli, path):
     """
