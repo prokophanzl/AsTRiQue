@@ -13,7 +13,7 @@ To test and evaluate this model, there is an option to use a lookup table as the
 
 ## ℹ️ Example Chart
 
-In this example, a virtual agent simulated participant 3 with the following AsTRiQue config:
+In this example, a virtual agent simulated participant 3 with the following config in AsTRiQue:
 
 ```python
 INIT_RANDOM_SAMPLES = 10      # initial random samples to collect
@@ -23,9 +23,9 @@ MODEL_CERTAINTY_CUTOFF = 0.95 # stopping certainty threshold
 PARTICIPANT_TO_MODEL = 'p03'  # participant ID to simulate
 ```
 
-The oracle (virtual agent) classified 57 stimuli out of 104. The remaining 47 were classified by the model with a 97.9% accuracy. This specific case would, with a human participant, translate to reducing the participant workload by about 45% while still producing data that is nearly as reliable as if the participant had answered every item themselves—with an effective overall accuracy of over 99%.
+The oracle (virtual agent) classified 57 stimuli out of 104. The remaining 47 were classified by the model with a 97.9% accuracy. This specific case would, with a human participant, translate to reducing the participant workload by about 45% while still producing data that is nearly as reliable as if the participant had answered every item themselves—with an effective overall accuracy of over 99% (including the participant's answers).
 
-Of course, this is an exceptionally good scenario; the model's efficiency can be impacted by the research question and especially the participant's predictability (the less consistent the participant is in in their answers, the more difficult it is to model them in the first place).
+Of course, this is an exceptionally good scenario; the model's efficiency can be impacted by the source data and especially by the participant's predictability (the less consistent the participant is in in their answers, the more difficult it is to model them in the first place).
 
 ![participant 3's answer and AsTRiQue prediction chart](images/p03_virtual_agent.png)
 
