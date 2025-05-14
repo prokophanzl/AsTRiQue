@@ -5,22 +5,22 @@ from sklearn.linear_model import LogisticRegression
 # DEFAULT CONFIG
 # ==============
 
-PREDICTOR1 = 'voicing'                    # first predictor column name
-PREDICTOR2 = 'duration'                   # second predictor column name
-FILENAME_COL = 'filename'                 # filename column name
-LABEL_MAPPING = {'s': 0, 'z': 1}          # binary output label mapping
+# PREDICTOR1 = 'voicing'                    # first predictor column name
+# PREDICTOR2 = 'duration'                   # second predictor column name
+# FILENAME_COL = 'filename'                 # filename column name
+# LABEL_MAPPING = {'s': 0, 'z': 1}          # binary output label mapping
 
-TARGET = 'answer_batch'                   # target column name
-DATA_PATH = 'data/data.csv'               # sound info data file path
-PARTICIPANT_CSV_DIR = 'data/participants' # participant CSV directory
-PROCESSED_PATH = 'data_processed.csv'     # processed data file path; leave blank to disable
-AUDIO_FOLDER = 'data/audio'               # audio file directory
+# TARGET = 'answer_batch'                   # target column name
+# DATA_PATH = 'data/data.csv'               # sound info data file path
+# PARTICIPANT_CSV_DIR = 'data/participants' # participant CSV directory
+# PROCESSED_PATH = 'data_processed.csv'     # processed data file path; leave blank to disable
+# AUDIO_FOLDER = 'data/audio'               # audio file directory
 
-INIT_RANDOM_SAMPLES = 10                  # initial random samples to collect
-MIN_ITERATIONS = 0                        # minimum number of iterations
-CLEANSER_FREQUENCY = 0                    # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
-MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold
-PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
+# INIT_RANDOM_SAMPLES = 10                  # initial random samples to collect
+# MIN_ITERATIONS = 0                        # minimum number of iterations
+# CLEANSER_FREQUENCY = 0                    # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
+# MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold
+# PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
 
 # ==============
 # SHARED FUNCTIONS
@@ -35,23 +35,20 @@ def initialize_dataframe(stimuli):
         if col not in stimuli.columns:
             stimuli[col] = None
 
-def get_sample(stimuli, iteration, active_learning_iteration):
+def get_sample(stimuli, iteration, cleanser_frequency, random_samples):
     """
     Returns a sample from the stimuli dataframe (uncertainty sampling with cleanser).
     Takes a dataframe with only unlabeled samples and the current iteration in the active learning phase.
     """
-
     # check if it is time for a cleanser (the single highest-certainty) sample, otherwise select the sample with the lowest certainty
-    if CLEANSER_FREQUENCY > 0 and active_learning_iteration % CLEANSER_FREQUENCY == 0:
-        print(f"Iteration {iteration}: Cleanser (AL {active_learning_iteration})")
-        # return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].max()].sample(1)
-        # include "cleanser" in the return statement
+    if cleanser_frequency > 0 and (iteration - random_samples) % cleanser_frequency == 0:
+        print(f"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].max()].sample(1), 'cleanser'
     else:
-        print(f"Iteration {iteration}: Uncertainty sampling (AL {active_learning_iteration})")
+        print(f"Iteration {iteration}: Uncertainty\tCertainty: {stimuli['prediction_certainty'].min()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].min()].sample(1), 'uncertainty'
 
-def train_model(stimuli):
+def train_model(stimuli, predictor1, predictor2):
     """
     Trains a logistic regression model based on the current state of the stimuli dataframe.
     Updates predicted_class and prediction_certainty for unlabeled samples.
@@ -63,7 +60,7 @@ def train_model(stimuli):
         raise ValueError("Not enough labeled samples to train the model.")
 
     # features and labels
-    X_train = stimuli.loc[valid, [PREDICTOR1, PREDICTOR2]]
+    X_train = stimuli.loc[valid, [predictor1, predictor2]]
     y_train = stimuli.loc[valid, 'participant_classification'].astype(int)
 
     # define and train logistic regression model
@@ -76,7 +73,7 @@ def train_model(stimuli):
         print("No unknown samples to predict.")
         return model
 
-    X_test = stimuli.loc[unknown, [PREDICTOR1, PREDICTOR2]]
+    X_test = stimuli.loc[unknown, [predictor1, predictor2]]
     probs = model.predict_proba(X_test)
 
     # predicted class (0 or 1) and associated certainty
