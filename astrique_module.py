@@ -193,8 +193,13 @@ def evaluate_model(stimuli, filename_col, query_participant_classification):
 
 def export_data(stimuli, path):
     """
-    Exports the stimuli dataframe to a CSV file.
+    Exports the stimuli dataframe to a CSV file if the path is provided.
     """
+
+    if not path:
+        print("Processed data not saved - PROCESSED_PATH is empty")
+        return
+
     # in all rows where participant_classification is known, remove the predicted_class and prediction_certainty values
     stimuli.loc[~stimuli['participant_classification'].isna(), ['predicted_class', 'prediction_certainty']] = np.nan
 
