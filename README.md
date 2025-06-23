@@ -2,6 +2,10 @@
 
 AsTRiQUE was presented as a flash talk and poster at the MEDAL Summer School of Computational Modeling in Birmingham on June 24, 2025. You can download the poster [here](extras/medal_poster.pdf).
 
+### Reference
+
+[1] Kocjančič, T., & Bořil, T. (2025). Voicing in Czech children’s sibilants: children’s productions and adult’s perception, International Clinical Phonetics and Linguistics Association (ICPLA), June 24-27, 2025, Patras.
+
 # AsTRiQue
 #### **AS**k **T**he **RI**ght **QUE**stions: An active machine learning framework for perception experiments
 
@@ -43,7 +47,7 @@ In the notebook, you'll be asked to classify all 104 stimuli. The model will sto
 Not feeling like doing the perception experiment yourself? You can still see AsTRiQue in action by running the `virtual_agent.ipynb` notebook locally or checking out the [virtual agent showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/virtual_agent.ipynb). Instead of querying you as the oracle, the model will query a lookup table of a real participant who took part in the original experiment.
 
 ### 📊 Dataset
-The showcase makes use of data from Bořil (YEAR), where he investigated the categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
+The showcase makes use of data from Kocjančič and Bořil (2025), where they investigated categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
 
 ### 🗂️ Data Structure
 #### 📁 data/data.csv
@@ -91,4 +95,4 @@ PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
 * Virtual agent: simulate other participants by changing `PARTICIPANT_TO_MODEL`
 
 
-TODO: Bořil citation
+[1] Kocjančič, T., & Bořil, T. (2025). Voicing in Czech children’s sibilants: children’s productions and adult’s perception, International Clinical Phonetics and Linguistics Association (ICPLA), June 24-27, 2025, Patras.
