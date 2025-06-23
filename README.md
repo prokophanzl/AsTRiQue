@@ -1,3 +1,7 @@
+## MEDAL Poster Presentation 
+
+AsTRiQUE was presented as a flash talk and poster at the MEDAL Summer School of Computational Modeling in Birmingham on June 24, 2025. You can download the poster [here](extras/medal_poster.pdf).
+
 # AsTRiQue
 #### **AS**k **T**he **RI**ght **QUE**stions: An active machine learning framework for perception experiments
 
