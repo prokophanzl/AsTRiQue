@@ -1,0 +1,36 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: AsTRiQue
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Prokop
+    family-names: Hanžl
+    email: prokophanzl03@gmail.com
+    affiliation: 'Institute of Phonetics, Charles University'
+    orcid: 'https://orcid.org/0009-0005-4193-6934'
+repository-code: 'https://github.com/prokophanzl/astrique'
+abstract: >-
+  Perception experiments in phonetics can be time-consuming,
+  often requiring participants to label large amounts of
+  stimuli. This proposed framework reduces participant
+  workload by continuously updating a logistic regression
+  model to select the most informative stimuli, making
+  high-certainty predictions for the rest. Using simulated
+  participants based on real data, the system achieved high
+  classification accuracy while significantly lowering the
+  number of required participant responses. These results
+  demonstrate the potential of active machine learning to
+  streamline data collection in perception experiments.
+keywords:
+  - active learning
+  - machine learning
+  - phonetics
+  - perception experiments
+  - perception testing
+license: GPL-3.0
+date-released: '2025-09-10'
