@@ -162,28 +162,35 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
 def evaluate_model(stimuli, filename_col, query_participant_classification):
     """
     Evaluate model predictions on the unanswered data by comparing them to real labels
-    obtained via query_participant_classification().
+    obtained via query_participant_classification(). The true labels are saved into
+    the 'reference_participant_classification' column of the stimuli dataframe.
     """
-    # get unanswered data
-    unanswered = stimuli[stimuli['participant_classification'].isna()].copy()
+    # create 'reference_participant_classification' column and set it to 'participant_classification' values
+    stimuli['reference_participant_classification'] = stimuli['participant_classification']
+
+    # select rows with missing participant classification
+    unanswered_mask = stimuli['reference_participant_classification'].isna()
+    unanswered = stimuli[unanswered_mask].copy()
     
     if unanswered.empty:
         print("No unanswered data to evaluate.")
-        return
+        return stimuli  # Return original unchanged DataFrame
 
-    # query the actual class for evaluation
+    # prepare lists for true and predicted labels
     true_labels = []
     predicted_labels = unanswered['predicted_class'].tolist()
 
     print("Evaluating model predictions on unanswered data...")
 
-    for filename in unanswered[filename_col]:
-        # print which sound is being evaluated out of how many - count filenames from 1
-        print(f"Evaluating sound {unanswered[filename_col].tolist().index(filename) + 1} out of {len(unanswered[filename_col])}")
+    for idx, row in unanswered.iterrows():
+        filename = row[filename_col]
+        print(f"Evaluating sound {list(unanswered.index).index(idx) + 1} out of {len(unanswered)}")
         true_label = int(query_participant_classification(filename))
         true_labels.append(true_label)
+        # update the main DataFrame
+        stimuli.at[idx, 'reference_participant_classification'] = true_label
 
-    # calculate metrics
+    # compute and print evaluation metrics
     acc = accuracy_score(true_labels, predicted_labels)
     cm = confusion_matrix(true_labels, predicted_labels)
     report = classification_report(true_labels, predicted_labels)
@@ -194,6 +201,8 @@ def evaluate_model(stimuli, filename_col, query_participant_classification):
     print(cm)
     print("\nClassification Report:")
     print(report)
+
+    return stimuli
 
 def export_data(stimuli, path):
     """
