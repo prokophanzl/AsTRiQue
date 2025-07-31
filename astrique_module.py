@@ -3,8 +3,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import pandas as pd
 import matplotlib.pyplot as plt
-from datetime import datetime
-import os
+
+rng = np.random.default_rng()
 
 # ==============
 # DEFAULT CONFIG
@@ -40,7 +40,7 @@ def initialize_dataframe(stimuli: pd.DataFrame) -> None:
         if col not in stimuli.columns:
             stimuli[col] = None
 
-def get_stratified_samples(stimuli, predictor1, predictor2, stratified_sampling_resolution):
+def get_stratified_samples(stimuli: pd.DataFrame, predictor1: str, predictor2: str, stratified_sampling_resolution: int) -> pd.DataFrame:
     """
     Returns a dataframe with a specified number of 2D-stratified random samples from the stimuli dataframe.
     """
@@ -52,27 +52,30 @@ def get_stratified_samples(stimuli, predictor1, predictor2, stratified_sampling_
     # drop rows with NaN bins (e.g., from NaN values or empty bins)
     stimuli = stimuli.dropna(subset=['bin1', 'bin2'])
 
+    def stratified_sample(group: pd.DataFrame) -> pd.DataFrame:
+        return group.sample(n=1, random_state=rng.integers(0, 1_000_000))
+
     # group by the 2D bin and sample one row randomly from each group
     grouped = stimuli.groupby(['bin1', 'bin2'], group_keys=False)
-    sampled = grouped.apply(lambda x: x.sample(n=1, random_state=np.random.randint(0, 1e6)))
+    sampled = grouped.apply(stratified_sample)
 
     # drop the bin columns before returning
     return sampled.drop(columns=['bin1', 'bin2']).reset_index(drop=True)
 
-def get_sample(stimuli, iteration, cleanser_frequency, init_samples):
+def get_sample(stimuli: pd.DataFrame, iteration: int, cleanser_frequency: int, init_samples: int) -> tuple[pd.DataFrame, str]:
     """
     Returns a sample from the stimuli dataframe (uncertainty sampling with cleanser).
     Takes a dataframe with only unlabeled samples and the current iteration in the active learning phase.
     """
     # check if it is time for a cleanser (the single highest-certainty) sample, otherwise select the sample with the lowest certainty
     if cleanser_frequency > 0 and (iteration - init_samples) % cleanser_frequency == 0:
-        print(f"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
+        printf"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].max()].sample(1), 'cleanser'
     else:
-        print(f"Iteration {iteration}: Uncertainty\tCertainty: {stimuli['prediction_certainty'].min()}")
+        printf"Iteration {iteration}: Uncertainty\tCertainty: {stimuli['prediction_certainty'].min()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].min()].sample(1), 'uncertainty'
 
-def train_model(stimuli, predictor1, predictor2):
+def train_model(stimuli: pd.DataFrame, predictor1: str, predictor2: str) -> LogisticRegression:
     """
     Trains a logistic regression model based on the current state of the stimuli dataframe.
     Updates predicted_class and prediction_certainty for unlabeled samples.
@@ -110,7 +113,7 @@ def train_model(stimuli, predictor1, predictor2):
 
     return model
 
-def plot_results(stimuli, model, plot_title, predictor1, predictor2, stratified_sampling_resolution, label_mapping):
+def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: str, predictor1: str, predictor2: str, stratified_sampling_resolution: int, label_mapping: dict[str, int]) -> None:
     """Visualize results with decision boundary and predicted classifications for unanswered data"""
 
     # split answered and unanswered data
@@ -188,7 +191,7 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, stratified_
     plt.tight_layout()
     plt.show()
 
-def evaluate_model(stimuli, filename_col, query_participant_classification, participant_id, stratified_sampling_resolution, min_iterations, cleanser_frequency, model_certainty_cutoff, initial_stratified_samples, total_iterations):
+def evaluate_model(stimuli: pd.DataFrame, filename_col: str, query_participant_classification: callable, participant_id: str, stratified_sampling_resolution: int, min_iterations: int, cleanser_frequency: int, model_certainty_cutoff: float, initial_stratified_samples: int, total_iterations: int) -> pd.DataFrame:
     """
     Evaluate model predictions on the unanswered data by comparing them to real labels
     obtained via query_participant_classification(). The true labels are saved into
@@ -211,13 +214,16 @@ def evaluate_model(stimuli, filename_col, query_participant_classification, part
 
     print("Evaluating model predictions on unanswered data...")
 
+    true_label_values = []
     for idx, row in unanswered.iterrows():
         filename = row[filename_col]
         print(f"Evaluating sound {list(unanswered.index).index(idx) + 1} out of {len(unanswered)}")
         true_label = int(query_participant_classification(filename))
         true_labels.append(true_label)
-        # update the main DataFrame
-        stimuli.at[idx, 'reference_participant_classification'] = true_label
+        true_label_values.append(true_label)
+
+    # batch update the main DataFrame
+    stimuli.loc[unanswered.index, 'reference_participant_classification'] = true_label_values
 
     # compute and print evaluation metrics
     acc = accuracy_score(true_labels, predicted_labels)
@@ -233,7 +239,7 @@ def evaluate_model(stimuli, filename_col, query_participant_classification, part
 
     return stimuli
 
-def export_data(stimuli, path):
+def export_data(stimuli: pd.DataFrame, path: str) -> None:
     """
     Exports the stimuli dataframe to a CSV file if the path is provided.
     """
