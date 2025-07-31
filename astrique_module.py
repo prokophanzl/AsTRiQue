@@ -24,14 +24,14 @@ import os
 # STRATIFIED_SAMPLING_RESOLUTION = 3        # grid size for 2D stratified sampling
 # MIN_ITERATIONS = 0                        # minimum number of iterations
 # CLEANSER_FREQUENCY = 0                    # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
-# MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold
-# PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
+# MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold — the model stops collecting answers if the prediction certainty for all unlabeled stimuli exceeds this value
+# PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate (virtual agent)
 
 # ==============
 # SHARED FUNCTIONS
 # ==============
 
-def initialize_dataframe(stimuli):
+def initialize_dataframe(stimuli: pd.DataFrame) -> None:
     """
     Makes sure the stimuli dataframe is correctly formatted.
     """
@@ -221,7 +221,7 @@ def evaluate_model(stimuli, filename_col, query_participant_classification, part
 
     # compute and print evaluation metrics
     acc = accuracy_score(true_labels, predicted_labels)
-    cm = confusion_matrix(true_labels, predicted_labels)
+    cm = confusion_matrix(true_labels, predicted_labels, labels=[0, 1])
     report = classification_report(true_labels, predicted_labels)
 
     print("\n=== Evaluation on Unanswered Data ===")
