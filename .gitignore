@@ -2,10 +2,13 @@
 .DS_Store
 Icon?
 
-# Output and sandbox files
+# output and sandbox files
 data_processed.csv
 sandbox.ipynb
 
-# Cache files
+# cache files
 __pycache__/*
 /.ipynb_checkpoints
+
+# testing files
+*_testing*
