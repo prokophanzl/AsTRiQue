@@ -3,6 +3,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
+import os
 
 # ==============
 # DEFAULT CONFIG
@@ -19,7 +21,7 @@ import matplotlib.pyplot as plt
 # PROCESSED_PATH = 'data_processed.csv'     # processed data file path; empty string to disable
 # AUDIO_FOLDER = 'data/audio'               # audio file directory
 
-# INIT_RANDOM_SAMPLES = 10                  # initial random samples to collect
+# STRATIFIED_SAMPLING_RESOLUTION = 3        # grid size for 2D stratified sampling
 # MIN_ITERATIONS = 0                        # minimum number of iterations
 # CLEANSER_FREQUENCY = 0                    # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
 # MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold
@@ -38,13 +40,32 @@ def initialize_dataframe(stimuli):
         if col not in stimuli.columns:
             stimuli[col] = None
 
-def get_sample(stimuli, iteration, cleanser_frequency, random_samples):
+def get_stratified_samples(stimuli, predictor1, predictor2, stratified_sampling_resolution):
+    """
+    Returns a dataframe with a specified number of 2D-stratified random samples from the stimuli dataframe.
+    """
+    # create 2D bins
+    stimuli = stimuli.copy()
+    stimuli['bin1'] = pd.cut(stimuli[predictor1], bins=stratified_sampling_resolution, labels=False)
+    stimuli['bin2'] = pd.cut(stimuli[predictor2], bins=stratified_sampling_resolution, labels=False)
+
+    # drop rows with NaN bins (e.g., from NaN values or empty bins)
+    stimuli = stimuli.dropna(subset=['bin1', 'bin2'])
+
+    # group by the 2D bin and sample one row randomly from each group
+    grouped = stimuli.groupby(['bin1', 'bin2'], group_keys=False)
+    sampled = grouped.apply(lambda x: x.sample(n=1, random_state=np.random.randint(0, 1e6)))
+
+    # drop the bin columns before returning
+    return sampled.drop(columns=['bin1', 'bin2']).reset_index(drop=True)
+
+def get_sample(stimuli, iteration, cleanser_frequency, init_samples):
     """
     Returns a sample from the stimuli dataframe (uncertainty sampling with cleanser).
     Takes a dataframe with only unlabeled samples and the current iteration in the active learning phase.
     """
     # check if it is time for a cleanser (the single highest-certainty) sample, otherwise select the sample with the lowest certainty
-    if cleanser_frequency > 0 and (iteration - random_samples) % cleanser_frequency == 0:
+    if cleanser_frequency > 0 and (iteration - init_samples) % cleanser_frequency == 0:
         print(f"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].max()].sample(1), 'cleanser'
     else:
@@ -89,7 +110,7 @@ def train_model(stimuli, predictor1, predictor2):
 
     return model
 
-def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mapping):
+def plot_results(stimuli, model, plot_title, predictor1, predictor2, stratified_sampling_resolution, label_mapping):
     """Visualize results with decision boundary and predicted classifications for unanswered data"""
 
     # split answered and unanswered data
@@ -146,6 +167,14 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
     # show background decision gradient
     contour = plt.contourf(xx, yy, Z, alpha=0.3, levels=20, cmap='coolwarm')
 
+    # draw n by n grid overlay
+    step_x = (x_max - x_min) / stratified_sampling_resolution
+    step_y = (y_max - y_min) / stratified_sampling_resolution
+
+    for i in range(stratified_sampling_resolution + 1):
+        plt.axvline(x_min + i * step_x, color='gray', linestyle='--', linewidth=0.5)
+        plt.axhline(y_min + i * step_y, color='gray', linestyle='--', linewidth=0.5)
+
     # custom color bar with labels s and z
     cbar = plt.colorbar(contour, ticks=[0, 1])
     rev_label_map = {v: k for k, v in label_mapping.items()}
@@ -159,7 +188,7 @@ def plot_results(stimuli, model, plot_title, predictor1, predictor2, label_mappi
     plt.tight_layout()
     plt.show()
 
-def evaluate_model(stimuli, filename_col, query_participant_classification):
+def evaluate_model(stimuli, filename_col, query_participant_classification, participant_id, stratified_sampling_resolution, min_iterations, cleanser_frequency, model_certainty_cutoff, initial_stratified_samples, total_iterations):
     """
     Evaluate model predictions on the unanswered data by comparing them to real labels
     obtained via query_participant_classification(). The true labels are saved into
