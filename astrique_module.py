@@ -69,10 +69,10 @@ def get_sample(stimuli: pd.DataFrame, iteration: int, cleanser_frequency: int, i
     """
     # check if it is time for a cleanser (the single highest-certainty) sample, otherwise select the sample with the lowest certainty
     if cleanser_frequency > 0 and (iteration - init_samples) % cleanser_frequency == 0:
-        printf"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
+        print(f"Iteration {iteration}:\tCleanser\tCertainty: {stimuli['prediction_certainty'].max()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].max()].sample(1), 'cleanser'
     else:
-        printf"Iteration {iteration}: Uncertainty\tCertainty: {stimuli['prediction_certainty'].min()}")
+        print(f"Iteration {iteration}: Uncertainty\tCertainty: {stimuli['prediction_certainty'].min()}")
         return stimuli[stimuli['prediction_certainty'] == stimuli['prediction_certainty'].min()].sample(1), 'uncertainty'
 
 def train_model(stimuli: pd.DataFrame, predictor1: str, predictor2: str) -> LogisticRegression:
