@@ -120,6 +120,9 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
     answered_data = stimuli[stimuli['participant_classification'].notna()]
     unanswered_data = stimuli[stimuli['participant_classification'].isna()]
 
+    # set font
+    plt.rcParams['font.family'] = 'Arial'
+
     plt.figure(figsize=(10, 6), dpi=300)
 
     # convert answers to numeric if necessary
@@ -135,7 +138,7 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
                 subset[predictor1],
                 subset[predictor2],
                 c='blue' if label_num == 0 else 'red',
-                label=f"answered ({label_char})",
+                label=f"Answered ({label_char})",
                 edgecolors='k'
             )
 
@@ -150,7 +153,7 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
                     predicted_subset[predictor2],
                     c=color,
                     alpha=0.3,
-                    label=f"predicted ({label_char})"
+                    label=f"Predicted ({label_char})"
                 )
 
     # decision boundary grid
@@ -182,7 +185,7 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
     cbar = plt.colorbar(contour, ticks=[0, 1])
     rev_label_map = {v: k for k, v in label_mapping.items()}
     cbar.ax.set_yticklabels([rev_label_map[0], rev_label_map[1]])
-    cbar.set_label('predicted answer')
+    cbar.set_label('Predicted Answer')
 
     plt.xlabel(predictor1)
     plt.ylabel(predictor2)
