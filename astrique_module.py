@@ -194,7 +194,7 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
     plt.tight_layout()
     plt.show()
 
-def evaluate_model(stimuli: pd.DataFrame, filename_col: str, query_participant_classification: callable, participant_id: str, stratified_sampling_resolution: int, min_iterations: int, cleanser_frequency: int, model_certainty_cutoff: float, initial_stratified_samples: int, total_iterations: int) -> pd.DataFrame:
+def evaluate_model(stimuli: pd.DataFrame, filename_col: str, query_participant_classification: callable) -> pd.DataFrame:
     """
     Evaluate model predictions on the unanswered data by comparing them to real labels
     obtained via query_participant_classification(). The true labels are saved into
