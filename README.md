@@ -1,6 +1,10 @@
+## Bachelor's Thesis
+
+AsTRiQue is described in detail in my bachelor's thesis (Institute of Phonetics, Faculty of Arts, Charles University). You can download the thesis [here](extras/thesis.pdf).
+
 ## MEDAL Poster Presentation 
 
-AsTRiQUE was presented as a flash talk and poster at the MEDAL Summer School of Computational Modeling in Birmingham on June 24, 2025. You can download the poster [here](extras/medal_poster.pdf).
+AsTRiQue was presented as a flash talk and poster at the MEDAL Summer School of Computational Modeling in Birmingham on June 24, 2025. You can download the poster [here](extras/medal_poster.pdf).
 
 ### Reference
 
@@ -11,7 +15,7 @@ AsTRiQUE was presented as a flash talk and poster at the MEDAL Summer School of 
 
 AsTRiQue is a tool designed to streamline perception experiments that involve large amounts of stimuli. In traditional perception experiments, participants often have to classify a large number of items, which can be time-consuming and tiring. AsTRiQue minimizes this burden through active learning; a kind of machine learning where a model is continuously updated based on the participant’s input to decide what to ask next.
 
-The experiment starts by randomly selecting a few stimuli for the participant ("oracle") to classify. Based on the answers, a logistic regression model is trained to predict how the participant might respond to all the remaining stimuli. Then, the model picks the stimulus it is most uncertain about (uncertainty sampling). By targeting these hard-to-predict cases, the model learns much faster.
+The experiment starts by selecting a few stimuli for the participant ("oracle") to classify (using a grid-based sampling strategy). Based on the answers, a logistic regression model is trained to predict how the participant might respond to all the remaining stimuli. Then, the model picks the stimulus it is most uncertain about (uncertainty sampling). By targeting these hard-to-predict cases, the model learns much faster.
 
 To keep things balanced, there is also an option to occasionally include a very easy (high-certainty) stimulus as a “cleanser” to reduce participant fatigue from repetitive difficult stimuli.
 
@@ -24,11 +28,11 @@ To test and evaluate this model, there is an option to use a lookup table as the
 In this example, a virtual agent simulated participant 3 with the following config in AsTRiQue:
 
 ```python
-INIT_RANDOM_SAMPLES = 10      # initial random samples to collect
-MIN_ITERATIONS = 30           # minimum number of iterations
-CLEANSER_FREQUENCY = 0        # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
-MODEL_CERTAINTY_CUTOFF = 0.95 # stopping certainty threshold
-PARTICIPANT_TO_MODEL = 'p03'  # participant ID to simulate
+STRATIFIED_SAMPLING_RESOLUTION = 3 # resolution of the n by n grid from which samples are taken
+MIN_ITERATIONS = 30                # minimum number of iterations
+CLEANSER_FREQUENCY = 0             # insert a high-certainty sample every nth iteration to prevent participant fatigue (irrelevant for virtual agents); 0 to disable
+MODEL_CERTAINTY_CUTOFF = 0.95      # stopping certainty threshold
+PARTICIPANT_TO_MODEL = 'p03'       # participant ID to simulate
 ```
 
 The oracle (virtual agent) classified 57 stimuli out of 104. The remaining 47 were classified by the model with a 97.9% accuracy. This specific case would, with a human participant, translate to reducing the participant workload by about 45% while still producing data that is nearly as reliable as if the participant had answered every item themselves—with an effective overall accuracy of over 99% (including the participant's answers).
@@ -83,7 +87,7 @@ DATA_PATH = 'data/data.csv'               # sound info data file path
 PARTICIPANT_CSV_DIR = 'data/participants' # participant CSV directory
 
 # model parameters
-INIT_RANDOM_SAMPLES = 10                  # initial random samples to collect
+STRATIFIED_SAMPLING_RESOLUTION = 3        # resolution of the n by n grid from which samples are taken
 MIN_ITERATIONS = 20                       # minimum number of iterations
 MODEL_CERTAINTY_CUTOFF = 0.95             # stopping certainty threshold
 PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
