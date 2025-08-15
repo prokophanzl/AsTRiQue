@@ -25,7 +25,7 @@ To test and evaluate this model, there is an option to use a lookup table as the
 
 ## ℹ️ Example Chart
 
-In this example, a virtual agent simulated participant 3 with the following config in AsTRiQue:
+In this example, a virtual agent simulated participant 3 from Kocjančič and Bořil (2025) with the following config in AsTRiQue:
 
 ```python
 STRATIFIED_SAMPLING_RESOLUTION = 3 # resolution of the n by n grid from which samples are taken
