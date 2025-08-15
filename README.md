@@ -13,7 +13,7 @@ AsTRiQue was presented as a flash talk and poster at the MEDAL Summer School of 
 # AsTRiQue
 #### **AS**k **T**he **RI**ght **QUE**stions: An active machine learning framework for perception experiments
 
-AsTRiQue is a tool designed to streamline perception experiments that involve large amounts of stimuli. In traditional perception experiments, participants often have to classify a large number of items, which can be time-consuming and tiring. AsTRiQue minimizes this burden through active learning; a kind of machine learning where a model is continuously updated based on the participant’s input to decide what to ask next.
+AsTRiQue is a tool designed to streamline perception experiments that involve large amounts of stimuli. In traditional perception experiments, participants often have to classify a large number of items, which can be time-consuming and tiring. AsTRiQue minimizes this burden through active learning; a kind of machine learning where a model is continuously updated based on the participant’s input to decide what to ask next, following in the footsteps of Einfeldt et al. (2024).
 
 The experiment starts by selecting a few stimuli for the participant ("oracle") to classify (using a grid-based sampling strategy). Based on the answers, a logistic regression model is trained to predict how the participant might respond to all the remaining stimuli. Then, the model picks the stimulus it is most uncertain about (uncertainty sampling). By targeting these hard-to-predict cases, the model learns much faster.
 
@@ -98,5 +98,8 @@ PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
 * Human participant: see how `CLEANSER_FREQUENCY` affects fatigue (by preventing long stretches of ambiguous stimuli)
 * Virtual agent: simulate other participants by changing `PARTICIPANT_TO_MODEL`
 
+### References
 
-[1] Kocjančič, T., & Bořil, T. (2025). Voicing in Czech children’s sibilants: children’s productions and adult’s perception, International Clinical Phonetics and Linguistics Association (ICPLA), June 24-27, 2025, Patras.
+Einfeldt, M., Sevastjanova, R., Zahner-Ritter, K., Kazak, E., & Braun, B. (2024). The use of Active Learning systems for stimulus selection and response modelling in perception experiments. Computer Speech & Language, 83, 101537. https://doi.org/10.1016/j.csl.2023.101537
+
+Kocjančič, T., & Bořil, T. (2025). Voicing in Czech children’s sibilants: children’s productions and adult’s perception, International Clinical Phonetics and Linguistics Association (ICPLA), June 24-27, 2025, Patras.
