@@ -31,6 +31,13 @@ rng = np.random.default_rng()
 # SHARED FUNCTIONS
 # ==============
 
+def set_seed(seed: int | None):
+    """
+    Sets the seed for the random number generator.
+    """
+    global rng
+    rng = np.random.default_rng(seed)
+
 def initialize_dataframe(stimuli: pd.DataFrame) -> None:
     """
     Makes sure the stimuli dataframe is correctly formatted.
