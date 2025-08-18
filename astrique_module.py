@@ -128,7 +128,7 @@ def plot_results(stimuli: pd.DataFrame, model: LogisticRegression, plot_title: s
     unanswered_data = stimuli[stimuli['participant_classification'].isna()]
 
     # set font
-    plt.rcParams['font.family'] = ['Arial', 'sans-serif']
+    # plt.rcParams['font.family'] = ['Arial', 'sans-serif']
 
     plt.figure(figsize=(10, 6), dpi=300)
 
