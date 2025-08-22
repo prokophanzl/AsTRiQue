@@ -31,7 +31,6 @@ class Config:
     # parameters
     STRATIFIED_SAMPLING_RESOLUTION: int = 3
     MIN_ITERATIONS: int = 0
-    MAX_ITERATIONS: int = 0
     CLEANSER_FREQUENCY: int = 0
     MODEL_CERTAINTY_CUTOFF: float = 0.95
     PARTICIPANT_TO_MODEL: str = "p01"
