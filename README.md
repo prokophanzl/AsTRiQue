@@ -1,6 +1,6 @@
 ## Bachelor's Thesis
 
-[AsTRiQue v0.1.1 alpha](https://github.com/prokophanzl/AsTRiQue/releases/tag/v0.1.1-alpha) is described in detail in my bachelor's thesis (Institute of Phonetics, Faculty of Arts, Charles University). You can download the thesis [here](extras/thesis.pdf).
+[AsTRiQue v0.1.1 Wireframe (alpha)](https://github.com/prokophanzl/AsTRiQue/releases/tag/v0.1.1-alpha) is described in detail in my bachelor's thesis (Institute of Phonetics, Faculty of Arts, Charles University). You can download the thesis [here](extras/thesis.pdf).
 
 ## MEDAL Poster Presentation
 
