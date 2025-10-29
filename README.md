@@ -1,8 +1,8 @@
 ## Bachelor's Thesis
 
-AsTRiQue is described in detail in my bachelor's thesis (Institute of Phonetics, Faculty of Arts, Charles University). You can download the thesis [here](extras/thesis.pdf).
+AsTRiQue is described in detail in my bachelor's thesis (Institute of Phonetics, Faculty of Arts, Charles University). You can view and download the thesis from the [Charles University Digital Repository](https://hdl.handle.net/20.500.11956/205493).
 
-## MEDAL Poster Presentation 
+## MEDAL Poster Presentation
 
 AsTRiQue was presented as a flash talk and poster at the MEDAL Summer School of Computational Modeling in Birmingham on June 24, 2025. You can download the poster [here](extras/medal_poster.pdf).
 
@@ -11,6 +11,7 @@ AsTRiQue was presented as a flash talk and poster at the MEDAL Summer School of 
 [1] Kocjančič, T., & Bořil, T. (2025). Voicing in Czech children’s sibilants: children’s productions and adult’s perception, International Clinical Phonetics and Linguistics Association (ICPLA), June 24-27, 2025, Patras.
 
 # AsTRiQue
+
 #### **AS**k **T**he **RI**ght **QUE**stions: An active machine learning framework for perception experiments
 
 AsTRiQue is a tool designed to streamline perception experiments that involve large amounts of stimuli. In traditional perception experiments, participants often have to classify a large number of items, which can be time-consuming and tiring. AsTRiQue minimizes this burden through active learning; a kind of machine learning where a model is continuously updated based on the participant’s input to decide what to ask next, following in the footsteps of Einfeldt et al. (2024).
@@ -48,13 +49,17 @@ If you'd like to see AsTRiQue in action with yourself as the participant, you ca
 In the notebook, you'll be asked to classify all 104 stimuli. The model will stop training after the confidence threshold is reached, the rest of your classifications will be used to evaluate the model's performance.
 
 ## 🤖 Virtual Agent Showcase
+
 Not feeling like doing the perception experiment yourself? You can still see AsTRiQue in action by running the `virtual_agent.ipynb` notebook locally or checking out the [virtual agent showcase notebook online](https://colab.research.google.com/github/prokophanzl/AsTRiQue/blob/main/virtual_agent.ipynb). Instead of querying you as the oracle, the model will query a lookup table of a real participant who took part in the original experiment.
 
 ### 📊 Dataset
+
 The showcase makes use of data from Kocjančič and Bořil (2025), where they investigated categorization of Czech sibilants /s/ vs. /z/ and /ʃ/ vs. /ʒ/ as a function of two acoustic parameters: voicing (quantified as the percentage of the segment exhibiting periodic vocal fold vibration) and segmental duration (in ms). For the purposes of the showcase, /s/ and /ʃ/ were batched together, as were /z/ and /ʒ/.
 
 ### 🗂️ Data Structure
+
 #### 📁 data/data.csv
+
 This spreadsheet contains the filenames of all recordings used in the experiment, as well as their parameters (voicing and duration).
 
 | filename             | voicing | duration |
@@ -66,11 +71,10 @@ This spreadsheet contains the filenames of all recordings used in the experiment
 #### 📁 data/participants/p01.csv
 
 This spreadsheet contains participant 1's answers in the real experiment.
-| filename             | answer_batch |
+| filename | answer_batch |
 | -------------------- | ------------ |
-| NJ8_sC_0_File017.wav | s            |
-| ...                  | ...          |
-
+| NJ8_sC_0_File017.wav | s |
+| ... | ... |
 
 ### ⚙️ Config & Technical Stuff
 
@@ -94,9 +98,10 @@ PARTICIPANT_TO_MODEL = 'p01'              # participant ID to simulate
 ```
 
 ### 🔄 Customization Tips
-* See how `MODEL_CERTAINTY_CUTOFF` affects the number of samples collected and prediction quality
-* Human participant: see how `CLEANSER_FREQUENCY` affects fatigue (by preventing long stretches of ambiguous stimuli)
-* Virtual agent: simulate other participants by changing `PARTICIPANT_TO_MODEL`
+
+-   See how `MODEL_CERTAINTY_CUTOFF` affects the number of samples collected and prediction quality
+-   Human participant: see how `CLEANSER_FREQUENCY` affects fatigue (by preventing long stretches of ambiguous stimuli)
+-   Virtual agent: simulate other participants by changing `PARTICIPANT_TO_MODEL`
 
 ### References
 
